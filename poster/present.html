@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#27254b">
+<meta name="description" content="NeuroNest 2050: AI가 수면을 이해하고 꿈의 경험까지 설계하는 미래 — 국민대학교 유레카 프로젝트 AI01 1팀">
+<title>NeuroNest 2050 | 포스터 발표 모드</title>
+<link rel="stylesheet" href="present.css">
+<script src="present.js" defer></script>
+</head><body>
+<header class="topbar">
+ <a class="brand" href="../">☾ <b>NeuroNest</b> <span>2050</span><small>포스터 발표</small></a>
+ <div class="top-actions">
+  <a class="ghost" href="../">프로젝트 홈</a>
+  <a class="ghost" href="../assets/neuronest/poster.svg" target="_blank" rel="noopener">포스터 원본 ↗</a>
+  <button class="primary" type="button" id="fullscreen" aria-pressed="false">⛶ 전체화면</button>
+ </div>
+</header>
+<nav class="chapters" aria-label="발표 순서">
+ <button data-section="0" aria-pressed="true">전체</button>
+ <button data-section="1">01 미래 비전</button>
+ <button data-section="2">02 문제·사용자</button>
+ <button data-section="3">03 작동 방식</button>
+ <button data-section="4">04 꿈 유도·악몽 대응</button>
+ <button data-section="5">05 기술 로드맵</button>
+ <button data-section="6">06 검증·팀</button>
+</nav>
+<main id="viewport" tabindex="0" aria-label="포스터 발표 영역: 왼쪽 오른쪽 방향키로 구역 이동, 0으로 전체 보기">
+ <div id="canvas"><img id="poster" src="../assets/neuronest/poster.svg" draggable="false" alt="NeuroNest 2050 포스터: AI 수면 관리, 꿈 유도, 악몽 대응, 기술 로드맵, 실현 과제"></div>
+ <div id="message" role="status" aria-live="polite" hidden></div>
+</main>
+<footer class="controls">
+ <div class="paging"><button id="previous" title="이전 구역 (←)">←</button><span id="position" aria-live="polite">전체 보기</span><button id="next" title="다음 구역 (→)">→</button></div>
+ <p class="hint">← → 이동 <span>·</span> 0 전체 보기 <span>·</span> F 전체화면 <span>·</span> +/- 확대/축소 <span>·</span> 드래그 이동</p>
+ <div class="zoom"><button id="zoom-out" aria-label="축소">−</button><button id="fit">화면 맞춤</button><button id="zoom-in" aria-label="확대">+</button></div>
+</footer>
+</body></html>
