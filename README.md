@@ -9,12 +9,12 @@
 ### Somnia 2050 — 잠을 관리하는 시대를 넘어, 꿈을 설계하는 시대로
 
 <div class="poster">
-  <a href="https://kookmin-sw.github.io/E26-AI01-01/poster/present.html"><img src="poster-final.jpg" alt="Somnia 2050 최종 포스터" width="600"/></a>
+  <a href="https://kookmin-sw.github.io/E26-AI01-01/poster/present.html?v=somnia2050-3"><img src="poster-final.jpg" alt="Somnia 2050 최종 포스터" width="600"/></a>
 </div>
 
 <p align="center" class="poster-caption"><sub>우리 팀이 상상한 2050년 미래: AI 수면 관리 · Dream Director(꿈 유도) · Nightmare Guardian(악몽 대응)</sub></p>
 
-<p align="center"><strong><a href="https://kookmin-sw.github.io/E26-AI01-01/poster/present.html">⛶ 포스터 발표 모드 열기</a></strong> · <a href="poster-final.jpg">최종 포스터 이미지 보기</a></p>
+<p align="center"><strong><a href="https://kookmin-sw.github.io/E26-AI01-01/poster/present.html?v=somnia2050-3">⛶ 포스터 발표 모드 열기</a></strong> · <a href="poster-final.jpg">최종 포스터 이미지 보기</a></p>
 
 발표 모드에서 **← →**로 영역을 이동하고, **F**로 전체화면, **0**으로 전체 포스터를 볼 수 있습니다.
 
