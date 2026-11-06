@@ -6,10 +6,10 @@
 
 ## 🖼️ 팀 포스터
 
-### NeuroNest 2050 — 잠을 관리하는 시대를 넘어, 꿈을 설계하는 시대로
+### Somnia 2050 — 잠을 관리하는 시대를 넘어, 꿈을 설계하는 시대로
 
 <div class="poster">
-  <a href="https://kookmin-sw.github.io/E26-AI01-01/poster/present.html"><img src="poster-final.jpg" alt="NeuroNest 2050 최종 포스터" width="600"/></a>
+  <a href="https://kookmin-sw.github.io/E26-AI01-01/poster/present.html"><img src="poster-final.jpg" alt="Somnia 2050 최종 포스터" width="600"/></a>
 </div>
 
 <p align="center" class="poster-caption"><sub>우리 팀이 상상한 2050년 미래: AI 수면 관리 · Dream Director(꿈 유도) · Nightmare Guardian(악몽 대응)</sub></p>
