@@ -5,14 +5,12 @@
   // Stages follow the 4m25s Somnia 2050 presentation script.
   const W = 1199, H = 1312;
   const sections = [
-    { name: "전체 보기",                      time: "",       box: [0, 0, W, H] },
-    { name: "1 프로젝트 소개·미래 비전",        time: "0:00",   box: [0, 0, 1199, 322] },
-    { name: "2 문제·사용자·2050년 변화",       time: "0:35",   box: [12, 324, 1176, 231] },
-    { name: "3 서비스 작동 방식",               time: "1:20",   box: [13, 556, 568, 275] },
-    { name: "4 Dream Director·악몽 대응",      time: "1:50",   box: [588, 556, 319, 275] },
-    { name: "5 AI 핵심 기술",                   time: "2:35",   box: [914, 556, 275, 275] },
-    { name: "6 현재 기술과 2050년의 일상",      time: "2:55",   box: [12, 834, 1176, 229] },
-    { name: "7 검증 과제와 기대 효과",          time: "3:30",   box: [12, 1066, 1176, 243] }
+    { name: "전체 보기",                     time: "",       box: [0, 0, W, H] },
+    { name: "1 프로젝트 소개·미래 비전",       time: "0:00",   box: [0, 0, 1199, 322] },
+    { name: "2 문제·사용자·2050년 변화",      time: "0:35",   box: [12, 324, 1176, 231] },
+    { name: "3 서비스 구조·핵심 기능·기술",    time: "1:20",   box: [12, 556, 1176, 275] },
+    { name: "4 현재 기술과 2050년의 일상",     time: "2:35",   box: [12, 834, 1176, 229] },
+    { name: "5 검증 과제와 기대 효과",         time: "3:30",   box: [12, 1066, 1176, 243] }
   ]
 
   const stage = document.getElementById("viewport");
@@ -121,7 +119,7 @@
       event.preventDefault(); select(selected + 1);
     } else if (["arrowleft", "pageup"].includes(key)) {
       event.preventDefault(); select(selected - 1);
-    } else if (/^[0-7]$/.test(key)) {
+    } else if (/^[0-5]$/.test(key)) {
       event.preventDefault(); select(Number(key));
     } else if (key === "home") {
       event.preventDefault(); select(0);
