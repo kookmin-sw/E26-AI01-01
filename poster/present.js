@@ -1,15 +1,15 @@
 (()=>{"use strict";
-const W=841,H=1189;
+const W=1199,H=1312;
 const zones=[
- {name:"전체 보기",box:[0,0,W,H]},
- {name:"01 미래 비전",box:[0,0,841,345]},
- {name:"02 문제와 사용자",box:[15,347,812,183]},
- {name:"03 서비스 작동 방식",box:[15,521,812,211]},
- {name:"04 꿈 유도와 악몽 대응",box:[17,725,802,237]},
- {name:"05 기술 발전 로드맵",box:[413,732,405,230]},
- {name:"06 실현 가능성과 팀",box:[15,963,812,225]}
+ {name:"전체 보기",box:[0,0,1199,1312]},
+ {name:"01 제목과 미래 비전",box:[0,0,1199,320]},
+ {name:"02 문제·사용자·2050년 변화",box:[0,317,1199,236]},
+ {name:"03 서비스 흐름·핵심 기능",box:[0,545,1199,283]},
+ {name:"04 핵심 기술·미래의 일상",box:[0,827,1199,235]},
+ {name:"05 실현 가능성·참고자료",box:[0,1058,1199,254]}
 ];
 const viewport=document.getElementById("viewport"),canvas=document.getElementById("canvas"),poster=document.getElementById("poster");
+canvas.style.width=W+"px";canvas.style.height=H+"px";
 const buttons=[...document.querySelectorAll("[data-section]")],position=document.getElementById("position");
 let index=0,scale=1,tx=0,ty=0,drag=null;
 function render(immediate=false){canvas.style.transition=immediate?"none":"";canvas.style.transform=`translate(${tx}px,${ty}px) scale(${scale})`;}
@@ -40,7 +40,8 @@ viewport.addEventListener("pointerdown",e=>{if(e.button!==0)return;drag={x:e.cli
 viewport.addEventListener("pointermove",e=>{if(!drag)return;tx=drag.tx+e.clientX-drag.x;ty=drag.ty+e.clientY-drag.y;render(true);});
 function stop(){drag=null;canvas.classList.remove("dragging");}viewport.addEventListener("pointerup",stop);viewport.addEventListener("pointercancel",stop);
 function notify(s){const m=document.getElementById("message");m.hidden=false;m.textContent=s;setTimeout(()=>{m.hidden=true},3500);}
-if(!poster.complete){poster.addEventListener("error",()=>notify("포스터를 불러올 수 없습니다. 원본 파일 경로를 확인해 주세요."));}
+const handleMissing=()=>{const m=document.getElementById("message");m.hidden=false;m.textContent="최종 포스터 파일(poster-final.jpg)을 GitHub 저장소 루트에 업로드하면 이 화면에 표시됩니다.";};
+poster.addEventListener("error",handleMissing);if(poster.complete&&poster.naturalWidth===0)handleMissing();
 window.addEventListener("resize",()=>fitBox(zones[index].box,true));
 requestAnimationFrame(()=>fitBox(zones[0].box,true));
 })();
