@@ -6,16 +6,17 @@
 
 ## 🖼️ 팀 포스터
 
-<div class="poster"><img src="poster.jpg" alt="팀 포스터" width="600"/></div>
+### NeuroNest 2050 — 잠을 관리하는 시대를 넘어, 꿈을 설계하는 시대로
 
-<p align="center" class="poster-caption"><sub>이정문 화백, 「서기 2000년대 생활의 이모저모」(1965). 출처: <a href="https://v.daum.net/v/d4FeeJV0EN">전자신문 [과학 핫이슈] 1965년에 상상한 2000년대, 지금 그려보는 20년 후</a></sub></p>
+<div class="poster">
+  <a href="poster/present.html"><img src="poster-final.jpg" alt="NeuroNest 2050 최종 포스터" width="600"/></a>
+</div>
 
-1965년에 35년 뒤의 생활을 상상해 그린 이 그림처럼, 우리 팀이 그리는 미래를 포스터로 만들어 봅시다.
-팀 활동으로 만든 포스터를 `poster.jpg` 파일 이름으로 이 repository에 업로드하면 위 그림이 팀 포스터로 바뀝니다.
-파일 이름이 다르거나 png 파일이면 위 `<img src="poster.jpg">`의 파일 이름을 맞추고, 출처 문구도 팀에 맞게 고쳐 주세요.
+<p align="center" class="poster-caption"><sub>우리 팀이 상상한 2050년 미래: AI 수면 관리 · Dream Director(꿈 유도) · Nightmare Guardian(악몽 대응)</sub></p>
 
-> **포스터 파일 권장 규격**: A4 세로 비율(1 : 1.414), 1240×1754px 이상, JPG, 2MB 이하.
-> 홈페이지에서는 어떤 크기·비율의 파일을 올려도 같은 크기의 세로 틀 안에 맞춰 표시되지만, 권장 규격을 지키면 여백 없이 가장 선명하게 보입니다.
+<p align="center"><strong><a href="poster/present.html">⛶ 포스터 발표 모드 열기</a></strong> · <a href="poster-final.jpg">최종 포스터 이미지 보기</a></p>
+
+발표 모드에서 **← →**로 영역을 이동하고, **F**로 전체화면, **0**으로 전체 포스터를 볼 수 있습니다.
 
 ***
 
