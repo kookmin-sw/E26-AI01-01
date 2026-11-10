@@ -1,0 +1,44 @@
+name: Render Somnia PDF poster for website
+
+on:
+  push:
+    paths:
+      - E26-AI01-01.pdf
+      - .github/workflows/render-somnia-poster.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF renderer
+        run: python -m pip install --quiet pymupdf pillow
+      - name: Generate preview directly from uploaded PDF
+        run: |
+          python - <<'PY'
+          import fitz
+          from PIL import Image
+          source = fitz.open('E26-AI01-01.pdf')
+          page = source[0]
+          viewport = page.get_pixmap(matrix=fitz.Matrix(1.2, 1.2), alpha=False)
+          img = Image.frombytes("RGB", (viewport.width, viewport.height), viewport.samples)
+          img.thumbnail((2400, 3400), Image.Resampling.LANCZOS)
+          img.save('poster-web.jpg', 'JPEG', quality=90, optimize=True)
+          print('Saved poster-web.jpg:', img.size)
+          PY
+      - name: Commit latest PDF preview
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add poster-web.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Render website poster from uploaded A0 PDF"
+            git push
+          fi
