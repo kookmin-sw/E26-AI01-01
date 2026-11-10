@@ -1,16 +1,16 @@
 (() => {
   "use strict";
 
-  // Coordinates match the team's approved poster-final.jpg (1199 × 1312).
+  // A0 portrait PDF preview rendered by PDF.js: 841 x 1189 mm, 1200 x 1697 logical pixels.
   // Stages follow the 4m25s Somnia 2050 presentation script.
-  const W = 1199, H = 1312;
+  const W = 1200, H = 1697;
   const sections = [
-    { name: "전체 보기",                     time: "",       box: [0, 0, W, H] },
-    { name: "1 프로젝트 소개·미래 비전",       time: "0:00",   box: [0, 0, 1199, 322] },
-    { name: "2 문제·사용자·2050년 변화",      time: "0:35",   box: [12, 324, 1176, 231] },
-    { name: "3 서비스 구조·핵심 기능·기술",    time: "1:20",   box: [12, 556, 1176, 275] },
-    { name: "4 현재 기술과 2050년의 일상",     time: "2:35",   box: [12, 834, 1176, 229] },
-    { name: "5 검증 과제와 기대 효과",         time: "3:30",   box: [12, 1066, 1176, 243] }
+    { name: "전체 보기",                     time: "",      box: [0, 0, W, H] },
+    { name: "1 프로젝트 소개·미래 비전",       time: "0:00",  box: [0, 0, W, 266] },
+    { name: "2 문제·사용자·2050년 변화",      time: "0:35",  box: [10, 264, 1180, 285] },
+    { name: "3 서비스 구조·핵심 기능·기술",    time: "1:20",  box: [10, 551, 1180, 516] },
+    { name: "4 현재 기술과 2050년의 일상",     time: "2:35",  box: [10, 1070, 605, 448] },
+    { name: "5 검증 과제·기대 효과·마무리",    time: "3:30",  box: [0, 1068, W, 629] }
   ]
 
   const stage = document.getElementById("viewport");
@@ -162,9 +162,42 @@
   stage.addEventListener("lostpointercapture", stopDrag);
 
   window.addEventListener("resize", () => { if (imageReady) fit(true); });
-  function ready() { imageReady = true; select(0); }
-  poster.addEventListener("load", ready);
-  poster.addEventListener("error", () => alertUser("poster-final.jpg 파일을 불러오지 못했습니다."));
-  if (poster.complete && poster.naturalWidth > 0) ready();
-  else if (poster.complete) alertUser("포스터를 불러오지 못했습니다.");
+  async function ready() {
+    imageReady = true;
+    select(0);
+  }
+
+  // Render the exact uploaded PDF, not the previous JPEG preview.
+  // A 2x canvas preserves legibility when presenting sections.
+  async function loadPdf() {
+    const pdfUrl = "../E26-AI01-01.pdf?v=2fe3febf94565445";
+    try {
+      if (!window.pdfjsLib) throw new Error("PDF.js 로드 실패");
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      const loadingTask = pdfjsLib.getDocument({url: pdfUrl});
+      const pdf = await loadingTask.promise;
+      const page = await pdf.getPage(1);
+      const renderFactor = window.innerWidth < 800 ? 1.35 : 2;
+      const viewport = page.getViewport({
+        scale: (W * renderFactor) / page.view[2]
+      });
+      poster.width = Math.ceil(viewport.width);
+      poster.height = Math.ceil(viewport.height);
+      await page.render({
+        canvasContext: poster.getContext("2d", {alpha: false}),
+        viewport
+      }).promise;
+      await ready();
+    } catch (error) {
+      alertUser("PDF를 표시할 수 없습니다. 상단 '최종 PDF 원본'에서 열어 주세요.");
+      const fallback = document.createElement("a");
+      fallback.href = "../E26-AI01-01.pdf";
+      fallback.textContent = "최종 A0 PDF 포스터 직접 열기";
+      fallback.style.cssText = "position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#332655;background:#fff;padding:16px;border-radius:10px;";
+      canvas.appendChild(fallback);
+      console.error("Somnia poster PDF rendering error:", error);
+    }
+  }
+  loadPdf();
 })();
